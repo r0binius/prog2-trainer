@@ -55,13 +55,13 @@ async function ask(prompt: string): Promise<void> {
 
 function check(): void {
   void ask(
-    `Du bist Tutor für die Vorlesung Algorithmen und Datenstrukturen (Informatik, 2. Semester). Eine Studentin hat aus dem Gedächtnis aufgeschrieben, was unten unter ANTWORT steht. Vergleiche es mit der REFERENZ aus den Folien; deren Begriffe und Konventionen gelten. Sage in höchstens 120 Wörtern: was stimmt, was fehlt (besonders Voraussetzungen, Sonderfälle und der Aufwand in O-Notation) und was falsch ist. Schließe mit einem Urteil: "Gewusst" oder "Noch nicht". ${rules}\n\nREFERENZ:\n${referenceOf()}\n\nANTWORT:\n${answer}`,
+    `Du bist Tutor für die Vorlesung Theoretische Informatik (formale Sprachen, Automaten, Berechenbarkeit, Petri-Netze). Eine Studentin hat aus dem Gedächtnis aufgeschrieben, was unten unter ANTWORT steht. Vergleiche es mit der REFERENZ aus den Folien; deren Begriffe und Konventionen gelten. Sage in höchstens 120 Wörtern: was stimmt, was fehlt (besonders Voraussetzungen, Sonderfälle und die exakte formale Schreibweise) und was falsch ist. Schließe mit einem Urteil: "Gewusst" oder "Noch nicht". ${rules}\n\nREFERENZ:\n${referenceOf()}\n\nANTWORT:\n${answer}`,
   );
 }
 
 function explain(): void {
   void ask(
-    `Du bist Tutor für die Vorlesung Algorithmen und Datenstrukturen (Informatik, 2. Semester). Erkläre das Folgende anschaulich in höchstens 150 Wörtern: die Idee dahinter, wozu man es braucht, und ein kleines Beispiel oder eine typische Falle. ${rules}\n\n${referenceOf()}`,
+    `Du bist Tutor für die Vorlesung Theoretische Informatik (formale Sprachen, Automaten, Berechenbarkeit, Petri-Netze). Erkläre das Folgende anschaulich in höchstens 150 Wörtern: die Idee dahinter, wozu man es braucht, und ein kleines Beispiel oder eine typische Falle. ${rules}\n\n${referenceOf()}`,
   );
 }
 </script>

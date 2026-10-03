@@ -1,5 +1,5 @@
 {
-  "name": "ad-trainer",
+  "name": "theo-trainer",
   "private": true,
   "type": "module",
   "scripts": {
@@ -46,7 +46,7 @@
     "vitest": "^5.0.2",
     "vue-tsc": "^3.3.11"
   },
-  "description": "Exam trainer for Algorithmen & Datenstrukturen: definitions, algorithms, true-or-false and problems, with spaced repetition.",
+  "description": "Exam trainer for Theoretische Informatik: definitions, theorems and procedures, true-or-false and problems, with spaced repetition.",
   "license": "GPL-3.0-or-later",
   "packageManager": "pnpm@12.6.0",
   "engines": {

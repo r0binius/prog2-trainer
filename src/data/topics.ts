@@ -1,28 +1,36 @@
 import type { Topic } from '@/domain/content/types';
 
-import { avl } from './topics/avl';
-import { bBaeume } from './topics/b-baeume';
-import { binaerbaeume } from './topics/binaerbaeume';
-import { graphen } from './topics/graphen';
-import { komplexitaet } from './topics/komplexitaet';
-import { rekursion } from './topics/rekursion';
-import { sortieren } from './topics/sortieren';
-import { spannbaeume } from './topics/spannbaeume';
-import { suchbaeume } from './topics/suchbaeume';
-import { traversierung } from './topics/traversierung';
-import { wege } from './topics/wege';
+import { cnfCyk } from './topics/cnf-cyk';
+import { dfa } from './topics/dfa';
+import { entscheidbarkeit } from './topics/entscheidbarkeit';
+import { erreichbarkeit } from './topics/erreichbarkeit';
+import { grammatiken } from './topics/grammatiken';
+import { grenzen } from './topics/grenzen';
+import { kellerautomaten } from './topics/kellerautomaten';
+import { kontextabhaengig } from './topics/kontextabhaengig';
+import { maschinen } from './topics/maschinen';
+import { minimierung } from './topics/minimierung';
+import { nfa } from './topics/nfa';
+import { petriNetze } from './topics/petri-netze';
+import { pnp } from './topics/pnp';
+import { regulaer } from './topics/regulaer';
+import { sprachen } from './topics/sprachen';
 
-/** Everything the trainer teaches, in the order of the lecture's slide decks (1a to 3d). */
+/** Everything the trainer teaches, in the order of the lecture's slide decks (01a to 04b). */
 export const topics: readonly Topic[] = [
-  rekursion,
-  komplexitaet,
-  sortieren,
-  graphen,
-  traversierung,
-  spannbaeume,
-  wege,
-  binaerbaeume,
-  suchbaeume,
-  avl,
-  bBaeume,
+  sprachen,
+  entscheidbarkeit,
+  regulaer,
+  dfa,
+  minimierung,
+  grenzen,
+  nfa,
+  grammatiken,
+  cnfCyk,
+  kellerautomaten,
+  kontextabhaengig,
+  maschinen,
+  pnp,
+  petriNetze,
+  erreichbarkeit,
 ];

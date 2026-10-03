@@ -10,7 +10,7 @@ export type ProgressRepository = {
   readonly describe: () => 'browser' | 'account';
 };
 
-const storageKey = 'ad-trainer/progress';
+const storageKey = 'theo-trainer/progress';
 
 function parse(json: string | null): Progress {
   if (json === null) {

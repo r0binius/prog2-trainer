@@ -11,12 +11,14 @@ import { SVG } from 'mathjax-full/js/output/svg.js';
 
 import { escapeHtml } from '@/domain/content/rich';
 
-/** The number sets and Landau symbols the slides use, as short TeX commands. */
+/** The number sets, the Landau symbol, the script L of languages and the powerset P the slides use, as short TeX commands. */
 const macros = {
   N: String.raw`\mathbb{N}`,
   Z: String.raw`\mathbb{Z}`,
   R: String.raw`\mathbb{R}`,
   Oh: String.raw`\mathcal{O}`,
+  cL: String.raw`\mathcal{L}`,
+  Pot: String.raw`\mathcal{P}`,
 };
 
 const adaptor = liteAdaptor();

@@ -1,23 +1,26 @@
-# Algorithmen & Datenstrukturen – Prüfungstrainer
+# Theoretische Informatik – Prüfungstrainer
 
-Ein Lerntrainer für die Vorlesung Algorithmen & Datenstrukturen (Foliensätze 1a bis 3d): Rekursion,
-Komplexität, Sortierverfahren, Graphen und Bäume. Definitionen, Verfahren und Sätze,
-Wahr-oder-falsch-Aussagen und klausurnahe Aufgaben mit Musterlösung, dazu Wiederholung in wachsenden
-Abständen, Nachschlagen und eine Prüfungssimulation.
+Ein Lerntrainer für die Vorlesung Theoretische Informatik (Foliensätze 01a bis 04b): Alphabete, Worte
+und Sprachen, endliche Automaten, Grammatiken und Kellerautomaten, Turing- und Registermaschinen,
+P und NP, Petri-Netze. Definitionen, Sätze und Verfahren, Wahr-oder-falsch-Aussagen und klausurnahe
+Aufgaben mit Musterlösung, dazu Wiederholung in wachsenden Abständen, Nachschlagen und eine
+Prüfungssimulation (die volle Simulation dauert wie die Klausur 60 Minuten).
 
-Entstanden aus dem Mathe-2-Trainer: Lernablauf (erst zeigen, dann abfragen, bis es zweimal sitzt),
-Wiederholungsplanung (FSRS), Architektur und Aussehen sind übernommen. Neu sind die Inhalte und
-Code-Blöcke im Text, für Pseudocode, gezeichnete Bäume und Ablauftabellen. Der Trainer ist eine
-Web-App, die als eine einzige HTML-Datei gebaut wird und auch auf dem Handy läuft.
+Entstanden aus dem Algorithmen-&-Datenstrukturen-Trainer: Lernablauf (erst zeigen, dann abfragen, bis
+es zweimal sitzt), Wiederholungsplanung (FSRS), Architektur und Aussehen sind übernommen. Neu sind die
+Inhalte: 15 Kapitel, den Folien und den Übungsblättern 1 bis 6 nachgebaut. Automaten stehen als
+Übergangstabelle im Code-Block (der Pfeil markiert den Anfangszustand, der Stern akzeptierende
+Zustände), ebenso CYK-, Trennbarkeits- und Erreichbarkeitstabellen. Der Trainer ist eine Web-App, die
+als eine einzige HTML-Datei gebaut wird und auch auf dem Handy läuft.
 
 ## Was drin ist
 
 | Bereich          | Was er tut                                                                                 |
 | ---------------- | ------------------------------------------------------------------------------------------ |
-| Lernen           | Pro Foliensatz vier Decks. Neue Definitionen und Verfahren werden gezeigt, dann abgefragt. |
+| Lernen           | Pro Kapitel vier Decks. Neue Definitionen und Sätze werden gezeigt, dann abgefragt.        |
 | Wiederholen      | Was gewusst wurde, kommt nach FSRS wieder: kurz vor dem Vergessen.                         |
 | Wahr oder falsch | Aussagen beurteilen, mit Begründung oder Gegenbeispiel. Wird automatisch bewertet.         |
-| Aufgaben         | Klausurnahe Aufgaben, den Beispielen der Folien nachgebaut, mit Tipp und Musterlösung.     |
+| Aufgaben         | Klausurnahe Aufgaben, den Folien und Übungsblättern nachgebaut, mit Tipp und Musterlösung. |
 | Nachschlagen     | Volltextsuche über alles, mit Filter nach Kapitel und Art.                                 |
 | Prüfung          | Zufällige Aufgaben auf Zeit, danach Selbstkorrektur mit Punkten und Auswertung je Kapitel. |
 | Tutor (optional) | Als veröffentlichtes Claude-Artifact: eigene Antwort prüfen oder etwas erklären lassen.    |
@@ -31,10 +34,13 @@ Ein Kapitel ist eine Datei in `src/data/topics/`. Texte sind Rich Text: Absätze
 Listen mit `- `, `**fett**`, Formeln als TeX zwischen `$…$` oder `$$…$$`, kurzer Code zwischen
 `@@…@@` und Code-Blöcke zwischen zwei Zeilen `~~~` (Einrückung und Leerzeilen bleiben erhalten). Die
 Texte stehen in `String.raw`, damit Backslashes nicht verdoppelt werden müssen – deshalb darf im Text
-nie `${` und nie ein Backtick stehen. `\Oh` ergibt das O der O-Notation.
+nie `${` und nie ein Backtick stehen. Ein Dollarzeichen ist immer ein Formelbegrenzer, kann also
+nicht als Zeichen im Text stehen. `\Oh` ergibt das O der O-Notation, `\cL` das geschwungene L einer
+Sprache, `\Pot` das P der Potenzmenge.
 
-Hashing (Kapitel 4 der Vorlesung) fehlt noch: eine neue Datei anlegen und in `src/data/topics.ts`
-eintragen.
+Foliensatz 03a (Berechenbarkeit, Halteproblem) lag beim Erstellen nicht vor und fehlt noch; 03c
+(Quantencomputing) besteht nur aus Videos. Für 03a eine neue Datei anlegen und in
+`src/data/topics.ts` eintragen.
 
 `pnpm test` rendert jede Formel einmal mit MathJax und schlägt fehl, wenn eine nicht lesbar ist oder
 eine ID doppelt vorkommt. IDs nicht nachträglich ändern: der Fortschritt hängt an ihnen.
@@ -64,6 +70,6 @@ src/
 
 ## Lizenz
 
-[GPL-3.0-or-later](LICENSE). Die Inhalte folgen den Foliensätzen von Prof. Dr. Jörg Daubert und Prof.
-Dr. Lamya Abdullah (Sommersemester 2026); Formulierungen, Aufgaben und Lösungen sind eigene und ohne
+[GPL-3.0-or-later](LICENSE). Die Inhalte folgen den Foliensätzen und Übungsblättern von Dr. Florian Volk
+(Sommersemester 2026; Kapitel 1 und 2 basieren auf Material von Prof. Dr. Heinz-Peter Gumm); Formulierungen, Aufgaben und Lösungen sind eigene und ohne
 Gewähr.

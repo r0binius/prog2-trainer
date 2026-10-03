@@ -3,7 +3,7 @@ import type { DeckId, Item } from '@/domain/content/types';
 /** What each deck is called. */
 export const deckTitles: Readonly<Record<DeckId, string>> = {
   definitions: 'Definitionen',
-  theorems: 'Verfahren und Sätze',
+  theorems: 'Sätze und Verfahren',
   claims: 'Wahr oder falsch',
   problems: 'Aufgaben',
 };
@@ -11,7 +11,7 @@ export const deckTitles: Readonly<Record<DeckId, string>> = {
 /** What each kind of item is called. */
 export const kindLabels: Readonly<Record<Item['kind'], string>> = {
   definition: 'Definition',
-  theorem: 'Verfahren / Satz',
+  theorem: 'Satz / Verfahren',
   claim: 'Wahr oder falsch?',
   problem: 'Aufgabe',
 };
@@ -19,7 +19,7 @@ export const kindLabels: Readonly<Record<Item['kind'], string>> = {
 /** What a statement being tested asks for. */
 export const kindPrompts: Readonly<Record<'definition' | 'theorem', string>> = {
   definition: 'Wie lautet die Definition?',
-  theorem: 'Wie geht das Verfahren, was sagt der Satz – mit Voraussetzungen und Aufwand?',
+  theorem: 'Was sagt der Satz, wie geht das Verfahren – mit Voraussetzungen und Schritten?',
 };
 
 /** A day relative to today in words: 0 is today, 1 tomorrow, anything else "in n Tagen". */

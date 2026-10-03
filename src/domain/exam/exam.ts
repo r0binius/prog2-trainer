@@ -12,7 +12,7 @@ export type ExamPlan = {
 export const defaultPlan: ExamPlan = {
   id: 'halb',
   title: 'Halbe Klausur',
-  minutes: 45,
+  minutes: 30,
   counts: { definitions: 3, theorems: 3, claims: 8, problems: 3 },
 };
 
@@ -21,14 +21,14 @@ export const examPlans: readonly ExamPlan[] = [
   {
     id: 'kurz',
     title: 'Kurztest',
-    minutes: 20,
+    minutes: 15,
     counts: { definitions: 2, theorems: 2, claims: 5, problems: 1 },
   },
   defaultPlan,
   {
     id: 'voll',
     title: 'Volle Klausur',
-    minutes: 90,
+    minutes: 60,
     counts: { definitions: 5, theorems: 5, claims: 12, problems: 6 },
   },
 ];

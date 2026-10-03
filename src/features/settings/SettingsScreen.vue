@@ -64,12 +64,14 @@ const keys: readonly (readonly [string, string])[] = [
 
     <ListSection title="So lernt der Trainer mit dir">
       <p class="text">
-        Neue Definitionen, Verfahren und Sätze siehst du zuerst mit Lösung, danach wirst du
+        Neue Definitionen, Sätze und Verfahren siehst du zuerst mit Lösung, danach wirst du
         abgefragt, bis du sie zweimal hintereinander gewusst hast. Was du gewusst hast, bekommt
         einen Wiederholungstermin (FSRS): erst nach einem Tag, dann in wachsenden Abständen – und
         früher, wenn du danebenliegst. Inhalte, Begriffe und Schreibweisen folgen den Foliensätzen
-        1a bis 3d (Rekursion, Komplexität, Sortieren, Graphen, Bäume); die Aufgaben sind den
-        Beispielen der Folien nachgebaut. Hashing (Kapitel 4) ist noch nicht enthalten.
+        01a bis 04b (formale Sprachen, Automaten, Grammatiken, P und NP, Petri-Netze); die Aufgaben
+        sind den Beispielen der Folien und den Übungsblättern 1 bis 6 nachgebaut. Automaten stehen
+        als Tabelle: der Pfeil markiert den Anfangszustand, der Stern akzeptierende Zustände.
+        Foliensatz 03a (Berechenbarkeit, Halteproblem) ist noch nicht enthalten.
       </p>
     </ListSection>
   </div>
