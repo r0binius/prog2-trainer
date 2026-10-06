@@ -11,7 +11,7 @@ export type ExamPlan = {
 /** The mock exam chosen until the learner picks another: long enough to mean something. */
 export const defaultPlan: ExamPlan = {
   id: 'halb',
-  title: 'Halbe Klausur',
+  title: 'Halbe Simulation',
   minutes: 30,
   counts: { definitions: 3, theorems: 3, claims: 8, problems: 3 },
 };
@@ -27,7 +27,7 @@ export const examPlans: readonly ExamPlan[] = [
   defaultPlan,
   {
     id: 'voll',
-    title: 'Volle Klausur',
+    title: 'Volle Simulation',
     minutes: 60,
     counts: { definitions: 5, theorems: 5, claims: 12, problems: 6 },
   },

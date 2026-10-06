@@ -64,14 +64,16 @@ const keys: readonly (readonly [string, string])[] = [
 
     <ListSection title="So lernt der Trainer mit dir">
       <p class="text">
-        Neue Definitionen, Sätze und Verfahren siehst du zuerst mit Lösung, danach wirst du
+        Neue Definitionen, Regeln und Konzepte siehst du zuerst mit Lösung, danach wirst du
         abgefragt, bis du sie zweimal hintereinander gewusst hast. Was du gewusst hast, bekommt
         einen Wiederholungstermin (FSRS): erst nach einem Tag, dann in wachsenden Abständen – und
         früher, wenn du danebenliegst. Inhalte, Begriffe und Schreibweisen folgen den Foliensätzen
-        01a bis 04b (formale Sprachen, Automaten, Grammatiken, P und NP, Petri-Netze); die Aufgaben
-        sind den Beispielen der Folien und den Übungsblättern 1 bis 6 nachgebaut. Automaten stehen
-        als Tabelle: der Pfeil markiert den Anfangszustand, der Stern akzeptierende Zustände.
-        Foliensatz 03a (Berechenbarkeit, Halteproblem) ist noch nicht enthalten.
+        01 bis 08a (Grundlagen, C++ von Speicher über OOP bis Exceptions und Templates, Java von der
+        JVM über OOP bis zu den Language Features); die Aufgaben sind den Tasks 01 bis 07, den
+        Tutorials 01 bis 09b und der Coding Practice zu 08a nachgebaut. Die Erklärungen sind auf
+        Deutsch, die Fachbegriffe stehen wie auf den Folien auf Englisch. Viele Codebeispiele der
+        Folien sind dort Bilder; der Code im Trainer ist deshalb nach den Tutorials und den
+        Folientexten neu geschrieben.
       </p>
     </ListSection>
   </div>

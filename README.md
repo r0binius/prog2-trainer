@@ -1,26 +1,29 @@
-# Theoretische Informatik – Prüfungstrainer
+# Fortgeschrittene Programmierung – Prüfungstrainer
 
-Ein Lerntrainer für die Vorlesung Theoretische Informatik (Foliensätze 01a bis 04b): Alphabete, Worte
-und Sprachen, endliche Automaten, Grammatiken und Kellerautomaten, Turing- und Registermaschinen,
-P und NP, Petri-Netze. Definitionen, Sätze und Verfahren, Wahr-oder-falsch-Aussagen und klausurnahe
-Aufgaben mit Musterlösung, dazu Wiederholung in wachsenden Abständen, Nachschlagen und eine
-Prüfungssimulation (die volle Simulation dauert wie die Klausur 60 Minuten).
+Ein Lerntrainer für die Vorlesung Fortgeschrittene Programmierung (FPROG/PROG2, Foliensätze 01 bis
+08a): Grundlagen und Einordnung von Programmiersprachen, C++ von Stack und Heap über Klassen, RAII,
+Copy Semantics, Vererbung und Polymorphie bis zu Exceptions, Templates und Modern C++, danach Java
+von der JVM über Methoden, Vererbung, abstrakte Klassen, Interfaces und static bis zu Wrapper
+Classes, Enums, Casting und Strings. Definitionen, Regeln und Konzepte, Wahr-oder-falsch-Aussagen
+und klausurnahe Aufgaben mit Musterlösung, dazu Wiederholung in wachsenden Abständen, Nachschlagen
+und eine Prüfungssimulation auf Zeit.
 
-Entstanden aus dem Algorithmen-&-Datenstrukturen-Trainer: Lernablauf (erst zeigen, dann abfragen, bis
-es zweimal sitzt), Wiederholungsplanung (FSRS), Architektur und Aussehen sind übernommen. Neu sind die
-Inhalte: 15 Kapitel, den Folien und den Übungsblättern 1 bis 6 nachgebaut. Automaten stehen als
-Übergangstabelle im Code-Block (der Pfeil markiert den Anfangszustand, der Stern akzeptierende
-Zustände), ebenso CYK-, Trennbarkeits- und Erreichbarkeitstabellen. Der Trainer ist eine Web-App, die
-als eine einzige HTML-Datei gebaut wird und auch auf dem Handy läuft.
+Entstanden aus dem Theoretische-Informatik-Trainer: Lernablauf (erst zeigen, dann abfragen, bis es
+zweimal sitzt), Wiederholungsplanung (FSRS), Architektur und Aussehen sind übernommen. Neu sind die
+Inhalte: 17 Kapitel mit 416 Karten, den Folien, den Tasks 01 bis 07, den Tutorials 01 bis 09b und der
+Coding Practice zu 08a nachgebaut. Die Erklärungen sind auf Deutsch; die Fachbegriffe stehen wie auf
+den Folien auf Englisch (Pass by Reference, Stack Unwinding, Dynamic Method Dispatch). Code steht in
+Code-Blöcken, Speicherbilder und Vergleichstabellen ebenso. Der Trainer ist eine Web-App, die als
+eine einzige HTML-Datei gebaut wird und auch auf dem Handy läuft.
 
 ## Was drin ist
 
 | Bereich          | Was er tut                                                                                 |
 | ---------------- | ------------------------------------------------------------------------------------------ |
-| Lernen           | Pro Kapitel vier Decks. Neue Definitionen und Sätze werden gezeigt, dann abgefragt.        |
+| Lernen           | Pro Kapitel vier Decks. Neue Definitionen und Regeln werden gezeigt, dann abgefragt.       |
 | Wiederholen      | Was gewusst wurde, kommt nach FSRS wieder: kurz vor dem Vergessen.                         |
 | Wahr oder falsch | Aussagen beurteilen, mit Begründung oder Gegenbeispiel. Wird automatisch bewertet.         |
-| Aufgaben         | Klausurnahe Aufgaben, den Folien und Übungsblättern nachgebaut, mit Tipp und Musterlösung. |
+| Aufgaben         | Code schreiben, Ausgaben verfolgen, Fehler finden, Speicherbilder – mit Tipp und Lösung.   |
 | Nachschlagen     | Volltextsuche über alles, mit Filter nach Kapitel und Art.                                 |
 | Prüfung          | Zufällige Aufgaben auf Zeit, danach Selbstkorrektur mit Punkten und Auswertung je Kapitel. |
 | Tutor (optional) | Als veröffentlichtes Claude-Artifact: eigene Antwort prüfen oder etwas erklären lassen.    |
@@ -28,22 +31,40 @@ als eine einzige HTML-Datei gebaut wird und auch auf dem Handy läuft.
 Alles lässt sich mit der Tastatur bedienen (Leertaste, 1–4, W/F, T, S, Esc); die Tasten stehen an den
 Knöpfen und in den Einstellungen.
 
+## Kapitel
+
+| Foliensatz | Kapitel                                                                        |
+| ---------- | ------------------------------------------------------------------------------ |
+| 01         | Programmiersprachen einordnen · Ausführungsmodelle, Syntax, Semantik, OOP      |
+| 02         | C++: Einstieg und Programmaufbau · Speicher: Stack, Heap und Pointer           |
+| 03         | Mehrere Dateien, Referenzen und Datentypen · Funktionen, Overloading, Übergabe |
+| 04         | Klassen, Object Lifecycle und RAII · Copy Semantics · Vererbung · Polymorphie  |
+| 05         | Error Handling und Exceptions                                                  |
+| 05–06      | Templates und Modern C++                                                       |
+| 07a        | Java: Mental Model, JVM und Speicher                                           |
+| 07b        | Java: Syntax, Kontrollfluss und erste Klassen                                  |
+| 07c        | Java: Methoden, Pass-by-Value und Vererbung                                    |
+| 07d        | Java: Overriding, Polymorphie, Abstraktion und static                          |
+| 08a        | Java Language Features                                                         |
+
 ## Inhalte ergänzen
 
 Ein Kapitel ist eine Datei in `src/data/topics/`. Texte sind Rich Text: Absätze durch Leerzeilen,
-Listen mit `- `, `**fett**`, Formeln als TeX zwischen `$…$` oder `$$…$$`, kurzer Code zwischen
-`@@…@@` und Code-Blöcke zwischen zwei Zeilen `~~~` (Einrückung und Leerzeilen bleiben erhalten). Die
-Texte stehen in `String.raw`, damit Backslashes nicht verdoppelt werden müssen – deshalb darf im Text
-nie `${` und nie ein Backtick stehen. Ein Dollarzeichen ist immer ein Formelbegrenzer, kann also
-nicht als Zeichen im Text stehen. `\Oh` ergibt das O der O-Notation, `\cL` das geschwungene L einer
-Sprache, `\Pot` das P der Potenzmenge.
+Listen mit `- `, `**fett**`, kurzer Code zwischen `@@…@@` und Code-Blöcke zwischen zwei Zeilen `~~~`
+(Einrückung und Leerzeilen bleiben erhalten), Formeln als TeX zwischen `$…$` oder `$$…$$`. Die Texte
+stehen in `String.raw`, damit Backslashes nicht verdoppelt werden müssen (`"\n"` in C++-Code bleibt,
+wie es ist) – deshalb darf im Text nie `${` und nie ein Backtick stehen. Ein Dollarzeichen ist immer
+ein Formelbegrenzer, kann also nicht als Zeichen im Text oder im Code stehen. Fett wird auch
+innerhalb von `@@…@@` ausgewertet: zwei Sterne hintereinander (etwa ein Pointer auf einen Pointer)
+gehören in einen Code-Block.
 
-Foliensatz 03a (Berechenbarkeit, Halteproblem) lag beim Erstellen nicht vor und fehlt noch; 03c
-(Quantencomputing) besteht nur aus Videos. Für 03a eine neue Datei anlegen und in
-`src/data/topics.ts` eintragen.
+Die Codebeispiele der Folien sind größtenteils Bilder und lagen beim Erstellen nicht als Text vor;
+der Code im Trainer folgt den Tutorials, den Starter-Codes der Tasks und den Folientexten. Für einen
+späteren Foliensatz (etwa 08b) eine neue Datei anlegen und in `src/data/topics.ts` eintragen.
 
-`pnpm test` rendert jede Formel einmal mit MathJax und schlägt fehl, wenn eine nicht lesbar ist oder
-eine ID doppelt vorkommt. IDs nicht nachträglich ändern: der Fortschritt hängt an ihnen.
+`pnpm test` rendert jeden Text einmal und schlägt fehl, wenn eine Formel nicht lesbar ist, ein
+Code-Block nicht geschlossen wurde oder eine ID doppelt vorkommt. IDs nicht nachträglich ändern: der
+Fortschritt hängt an ihnen.
 
 ## Aufbau
 
@@ -65,11 +86,11 @@ src/
 | ------------ | ------------------------------------------- |
 | `pnpm dev`   | Entwicklungsserver                          |
 | `pnpm build` | baut `dist/index.html`, eine einzelne Datei |
-| `pnpm test`  | Tests, darunter: jede Formel ist lesbar     |
+| `pnpm test`  | Tests, darunter: jeder Text ist lesbar      |
 | `pnpm lint`  | ESLint                                      |
 
 ## Lizenz
 
-[GPL-3.0-or-later](LICENSE). Die Inhalte folgen den Foliensätzen und Übungsblättern von Dr. Florian Volk
-(Sommersemester 2026; Kapitel 1 und 2 basieren auf Material von Prof. Dr. Heinz-Peter Gumm); Formulierungen, Aufgaben und Lösungen sind eigene und ohne
+[GPL-3.0-or-later](LICENSE). Die Inhalte folgen den Foliensätzen, Tasks und Tutorials von Prof. Dr.
+Lamya Abdullah (Sommersemester 2026); Formulierungen, Aufgaben und Lösungen sind eigene und ohne
 Gewähr.

@@ -53,7 +53,7 @@ const next = computed(() =>
 <template>
   <div class="overview">
     <header class="hero">
-      <p class="caption">Theoretische Informatik · Foliensätze 01a bis 04b</p>
+      <p class="caption">Fortgeschrittene Programmierung · Foliensätze 01 bis 08a</p>
       <h1 class="headline">
         <template v-if="due > 0"
           >{{ due }} {{ due === 1 ? 'Karte ist' : 'Karten sind' }} heute fällig.</template

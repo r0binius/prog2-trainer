@@ -2,285 +2,275 @@ import { topic } from '@/domain/content/build';
 
 const r = String.raw;
 
-/** Slides 01a, first part: alphabets, words, languages, operations on words and induction. */
+/** Slides 01, first part: classification of languages, paradigms, typing, variables and subroutines. */
 export const sprachen = topic({
   id: 'sprachen',
-  chapter: '01a',
-  title: 'Alphabete, Worte, Sprachen',
-  summary: 'Alphabet, Wort, leeres Wort, Σ*, formale Sprache, Länge, Konkatenation, Induktion.',
+  chapter: '01',
+  title: 'Programmiersprachen einordnen',
+  summary:
+    'Grundelemente, Klassifikation nach Level, Zweck, Typisierung und Paradigma, Variablen und ihr Lebenszyklus.',
   definitions: [
     {
-      id: 'alphabet',
-      title: 'Alphabet',
-      ref: '01a · Alphabete',
-      statement: r`Ein **Alphabet** $\Sigma$ ist eine **endliche Menge**. Ihre Elemente heißen **Symbole** oder **Zeichen**.
+      id: 'paradigma',
+      title: 'Programming Paradigm',
+      ref: '01 · Programming Languages Types – by Paradigm',
+      statement: r`Ein **Programmierparadigma** ist ein grundlegender Stil, Programme zu schreiben. Es bestimmt, wie man über Code **denkt** und ihn **strukturiert**.
 
-Alphabete werden üblicherweise mit großen griechischen Buchstaben benannt: $\Sigma, \Gamma, \dots$`,
-      note: r`Beispiele: das unäre Alphabet $\{1\}$, das Binäralphabet $\{0, 1\}$, das Morsealphabet $\{\text{lang}, \text{kurz}, \text{Pause}\}$, das Hex-Alphabet $\{0, \dots, 9, A, \dots, F\}$. Ein Alphabet ist eine Menge – die Symbole haben **keine Reihenfolge**.`,
+Die gängigsten: Imperative, Object-Oriented, Functional, Declarative, Logic, Concurrent und Event-Driven Programming.`,
+      note: r`Viele Sprachen unterstützen **mehrere** Paradigmen (multi-paradigm): C++ ist prozedural, objektorientiert und generisch; Python ist imperativ, objektorientiert und funktional.`,
     },
     {
-      id: 'wort',
-      title: 'Wort und leeres Wort',
-      ref: '01a · Worte',
-      statement: r`Ein **Wort** über einem Alphabet $\Sigma$ ist eine **endliche Folge** von Symbolen aus $\Sigma$.
+      id: 'level',
+      title: 'Low-level vs. High-level Language',
+      ref: '01 · Programming Languages Types – by Level',
+      statement: r`**Low-level:** hardwareabhängig und schwer zu verstehen. Beispiele: Assembly, Maschinensprache (CPU-Instruktionen).
 
-Spezialfall: Das **leere Wort** $\epsilon$ ist die leere Folge von Symbolen.`,
-      note: r`Andere Literatur schreibt $\lambda$ statt $\epsilon$, Programmiersprachen schreiben @@""@@. Wichtig ist „endlich“: $\pi = 3{,}1415926\dots$ ist **kein** Wort über den Ziffern.`,
+**High-level:** unabhängig von der Hardware; der Code ähnelt englischen Anweisungen und lässt sich leicht lesen, schreiben und debuggen. Beispiele: C++, Java, Python, C#.`,
     },
     {
-      id: 'sigma-stern',
-      title: 'Menge aller Worte Σ*',
-      ref: '01a · Menge aller Worte über Σ',
-      statement: r`Die Menge aller Worte mit Zeichen aus dem Alphabet $\Sigma$ heißt $\Sigma^*$. Sie ist die **kleinste** Menge mit
+      id: 'zweck',
+      title: 'General-purpose vs. Domain-specific',
+      ref: '01 · Programming Languages Types – by Purpose',
+      statement: r`**General-purpose:** für ein breites Spektrum von Anwendungen einsetzbar – Python, Java, C++.
 
-- $\epsilon \in \Sigma^*$
-- $\forall a \in \Sigma,\ \forall u \in \Sigma^*: a.u \in \Sigma^*$
-
-Jedes nicht-leere Wort $w \in \Sigma^*$ lässt sich **eindeutig** darstellen als $w = a.u$ mit $a \in \Sigma$ (erstes Symbol) und $u \in \Sigma^*$ (Restwort).`,
-      note: r`Beispiel: $abra = a.bra = a.b.ra = a.b.r.a = a.b.r.a.\epsilon$. Genau diese rekursive Bauweise ($\epsilon$ oder $a.u$) macht strukturelle Induktion über Worte möglich.`,
+**Domain-specific:** für bestimmte Aufgaben oder Domänen entworfen – SQL (Datenbanken), HTML/CSS/JavaScript (Webentwicklung).`,
     },
     {
-      id: 'gleichheit',
-      title: 'Gleichheit von Worten',
-      ref: '01a · Menge aller Worte über Σ',
-      statement: r`Für $u, v \in \Sigma^*$ gilt $u = v$ genau dann, wenn
+      id: 'statisch-dynamisch',
+      title: 'Statically Typed vs. Dynamically Typed',
+      ref: '01 · Dynamically Typed vs. Static Typed Languages',
+      statement: r`**Statically typed:** Der Datentyp einer Variablen muss vor der Benutzung deklariert sein; der **Compiler** prüft Typfehler zur **Compile-Zeit**. Beispiele: C++, Java.
 
-- $u = \epsilon = v$, **oder**
-- $u = a.u'$ und $v = a.v'$ und $u' = v'$.`,
-      note: r`Zwei Worte sind gleich, wenn sie beide leer sind oder mit demselben Symbol beginnen und gleiche Restworte haben – zeichenweiser Vergleich, rekursiv formuliert.`,
+**Dynamically typed:** Der Typ einer Variablen wird erst zur **Laufzeit** bestimmt und geprüft, ohne vorherige Deklaration; die Typinformation steckt im Objekt selbst. Beispiele: Python, JavaScript, Ruby, PHP.`,
+      note: r`Die Frage ist **wann** geprüft wird (Compile-Zeit oder Laufzeit) – nicht **wie streng**. Wie streng, beantwortet strong vs. weak typing.`,
     },
     {
-      id: 'sprache',
-      title: 'Formale Sprache',
-      ref: '01a · Formale Sprachen',
-      statement: r`Eine **(formale) Sprache** über einem Alphabet $\Sigma$ ist eine Menge von Worten aus $\Sigma^*$. Jede Teilmenge $\cL \subseteq \Sigma^*$ ist eine formale Sprache.
+      id: 'stark-schwach',
+      title: 'Strongly Typed vs. Weakly Typed',
+      ref: '01 · Strongly Typed vs. Weakly Typed Language',
+      statement: r`**Strongly typed:** Die Typregeln werden strikt durchgesetzt (zur Compile-Zeit oder zur Laufzeit). Operationen auf nicht zusammenpassenden Typen sind ohne **explizite Konvertierung** nicht erlaubt, etwa String + Integer. Beispiele: Python, C++, Java, C#, Haskell.
 
-Das gilt insbesondere auch für
-
-- die Menge aller Worte $\Sigma^*$
-- die leere Menge $\emptyset = \{\}$
-- die Menge $\{\epsilon\}$, die nur das leere Wort enthält
-- jede einelementige Menge $\{a\}$ mit einem Wort der Länge 1`,
-      note: r`$\emptyset$ enthält **kein** Wort, $\{\epsilon\}$ enthält **ein** Wort (das leere). Beispiele: $\{a^n b^n \mid n \in \N_0\}$, alle Worte, die ein $c$ enthalten, die Dyck-Sprache der wohlgeformten Klammerausdrücke.`,
+**Weakly typed:** Die Typregeln sind lockerer; die Sprache konvertiert **implizit** (implicit type conversion). Beispiele: JavaScript, PHP, Perl.`,
+      note: r`Weak typing ist „flexible but risky“: bequem, aber Werte können unbemerkt in einen ungewollten Typ umgewandelt werden. Python ist **strongly und dynamically** typed – die beiden Achsen sind unabhängig.`,
     },
     {
-      id: 'laenge',
-      title: 'Länge eines Wortes',
-      ref: '01a · Typische Operationen auf Worten',
-      statement: r`Die **Länge** $|w|$ ist die Anzahl der Zeichen in $w$, induktiv definiert:
+      id: 'variable',
+      title: 'Variable und Datentyp',
+      ref: '01 · Variable Lifecycle & Concepts',
+      statement: r`Eine **Variable** ist ein Platzhalter: Sie steht für einen Speicherort, an dem ein Wert liegt. Ihre vier Eigenschaften:
 
-- $|\epsilon| = 0$ (Induktionsanfang: leeres Wort)
-- $|a.v| = 1 + |v|$ (Induktionsschritt: von $v$ nach $a.v$)`,
+- Name
+- Typ
+- Wert
+- Speicheradresse
+
+Der **Datentyp** legt fest, wie viel Speicher belegt wird und welche Operationen erlaubt sind.`,
     },
     {
-      id: 'konkatenation',
-      title: 'Konkatenation',
-      ref: '01a · Typische Operationen auf Worten',
-      statement: r`Das **Konkatenieren** (Aneinanderhängen) zweier Worte $u \circ v = uv$ ist induktiv über das **erste** Wort definiert:
+      id: 'subroutinen',
+      title: 'Function, Procedure, Method',
+      ref: '01 · Functions / Procedures / Methods',
+      statement: r`**Subroutines** sind wiederverwendbare Codeblöcke für eine bestimmte Aufgabe; sie organisieren den Code.
 
-- $\epsilon \circ v = v$
-- $(a.u) \circ v = a.(u \circ v)$
-
-Das Zeichen $a$ wird mit dem Wort $a.\epsilon$ (Länge 1) identifiziert; man schreibt $au$ statt $a.u$ und $ua$ statt $u \circ (a.\epsilon)$.`,
-      note: r`Der Kringel wird später meist weggelassen. Programmiersprachen sind pingeliger: Char @@'a'@@ ist nicht String @@"a"@@. Für Sprachen: $L_1 \circ L_2 = \{u \circ v \mid u \in L_1, v \in L_2\}$.`,
+- Eine **Function** liefert auf Basis ihrer Eingaben einen Wert zurück.
+- Eine **Procedure** führt Aktionen aus, ohne einen Wert zurückzugeben.
+- Eine **Method** ist eine Function oder Procedure, die in einer Klasse definiert ist und auf Objekten arbeitet.`,
+      note: r`Functions stehen eher für Berechnung, Procedures für Seiteneffekte (I/O, Mutation). Viele moderne Sprachen unterscheiden nicht mehr: In C++ ist eine Procedure einfach eine Funktion mit Rückgabetyp @@void@@.`,
     },
   ],
   theorems: [
     {
-      id: 'saetze-konkatenation',
-      title: 'Sätze über die Konkatenation',
-      ref: '01a · Beweisen von Operationen auf Worten',
-      statement: r`**Assoziativität:**
-
-$$\forall u, v, w \in \Sigma^*: (u \circ v) \circ w = u \circ (v \circ w)$$
-
-**Längenerhalt:** Die Länge eines konkatenierten Wortes ist die Summe der Längen.
-
-$$\forall u, v \in \Sigma^*: |u \circ v| = |u| + |v|$$
-
-**Rechtsneutrales Element:** $\forall w \in \Sigma^*: w \circ \epsilon = w$`,
-      note: r`$\epsilon \circ v = v$ gilt **per Definition**, $w \circ \epsilon = w$ muss dagegen **bewiesen** werden (strukturelle Induktion) – die Definition läuft nur über das linke Wort. Kommutativ ist $\circ$ nicht: $ab \ne ba$.`,
+      id: 'grundelemente',
+      title: 'Die fünf Grundelemente der Programmierung',
+      ref: '01 · Basic elements or operations of programming',
+      statement: r`- **Input:** Daten kommen ins Programm (Tastatur, Touchscreen, Datei).
+- **Output:** das gewünschte Ergebnis des Programms.
+- **Arithmetic:** mathematische Berechnungen und weitere Operationen.
+- **Conditional:** prüfen, ob eine Bedingung erfüllt ist, und abhängig davon Code ausführen oder nicht.
+- **Looping:** eine Aufgabe wiederholen, solange die Bedingung gilt.`,
+      note: r`Beispiel der Folien (Kursanmeldung): persönliche Daten eingeben, Bestätigung ausgeben, Teilnehmer zählen, „wenn der Raum frei ist, zuweisen“, „für alle Kurse wiederholen“.`,
     },
     {
-      id: 'vollstaendige-induktion',
-      title: 'Vollständige Induktion (über ℕ⁺)',
-      ref: '01a · Vollständige Induktion',
-      statement: r`Schema, um eine Behauptung für alle $n \in \N^+$ zu zeigen:
-
-- **Behauptung / Induktionsannahme** aufstellen, z. B. $\sum_{i=1}^{n} i = \frac{(n+1) \cdot n}{2}$
-- **Induktionsanfang:** Zeige die Behauptung für ein bestimmtes Element, z. B. $n = 1$.
-- **Induktionsschritt:** Zeige, dass die Behauptung für ein beliebiges $n + 1$ gilt, **falls** sie bereits für $n$ gilt.
-- **Induktionsschluss:** Weil sie für $n = 1$ gilt und für jedes $n$ vom Vorgänger auf den Nachfolger übergeht, gilt sie für alle $n$.`,
-      note: r`Intuitiv: gilt für 1, deshalb für 2, deshalb für 3, usw. Typischer Fehler (Einhornbeweis): Der Schritt muss wirklich für **jedes** $n$ funktionieren, auch von 1 auf 2.`,
+      id: 'lebenszyklus',
+      title: 'Lebenszyklus einer Variablen',
+      ref: '01 · Variable Lifecycle & Concepts',
+      statement: r`1. **Declaration:** dem Compiler/Interpreter mitteilen, dass ein Name existiert und (meist) welche Art Daten er hält. In Java/C++ explizit, in Python implizit bei der ersten Zuweisung.
+2. **Initialization:** die **erste** Zuweisung eines Wertes an die deklarierte Variable.
+3. **Assignment:** mit dem Zuweisungsoperator @@=@@ einen Wert im Speicherort ablegen. Erst wird die **rechte** Seite ausgewertet, dann das Ergebnis links gespeichert.
+4. **Overwriting (Mutation):** Eine neue Zuweisung ersetzt den alten Wert an dieser Adresse.`,
+      note: r`Benutzung vor der Initialisierung: in C++ **Undefined Behavior**, in Python ein **NameError**. Überschriebene Werte, auf die nichts mehr verweist, räumt in Python/Java irgendwann der Garbage Collector weg.`,
     },
     {
-      id: 'strukturelle-induktion',
-      title: 'Strukturelle Induktion (über rekursiv definierte Mengen)',
-      ref: '01a · Strukturelle Induktion',
-      statement: r`Um eine Behauptung $P(w)$ für alle $w \in \Sigma^*$ zu zeigen, folgt man dem Aufbau von $\Sigma^*$:
+      id: 'paradigmen-tabelle',
+      title: 'Die Paradigmen im Überblick',
+      ref: '01 · Paradigms of Programming',
+      statement: r`- **Imperative:** dem Computer Schritt für Schritt sagen, **wie** etwas zu tun ist – Variablen, Schleifen, Bedingungen, Funktionen (C, C++, Java, Python).
+- **Object-Oriented:** reale Dinge als Objekte mit Eigenschaften und Verhalten – Klassen, Vererbung, Polymorphie, Kapselung (Java, C++, Python, C#).
+- **Functional:** Berechnung als Auswertung mathematischer Funktionen – pure functions, higher-order functions, Rekursion, Immutability (Haskell, Lisp, Clojure).
+- **Declarative:** angeben, **was** berechnet werden soll, nicht wie (SQL, Prolog).
+- **Logic:** Probleme über logische Regeln lösen – Wissensbasis, Inferenzregeln (Prolog).
+- **Concurrent:** mehrere Aufgaben gleichzeitig – Threads, Prozesse, Synchronisation (Java, C++, Python).
+- **Event-Driven:** auf Ereignisse reagieren – Event Handler, Callbacks, Event Loop (JavaScript, Python).`,
+    },
+    {
+      id: 'statisch-pro-contra',
+      title: 'Static vs. Dynamic Typing: Vor- und Nachteile',
+      ref: '01 · Dynamically Typed vs. Static Typed Languages',
+      statement: r`**Static typing**
+- Pro: Early Error Detection (Typfehler schon beim Kompilieren), oft bessere Performance (optimierter Maschinencode), sichereres Refactoring.
+- Contra: mehr Schreibaufwand (verbosity), weniger Flexibilität (der Typ einer Variablen steht fest), steilere Lernkurve.
 
-- **Induktionsanfang:** Zeige $P(\epsilon)$.
-- **Induktionsschritt:** Zeige für beliebige $a \in \Sigma$, $v \in \Sigma^*$: $P(v) \Rightarrow P(a.v)$.
-- **Induktionsschluss:** $\forall w \in \Sigma^*: P(w)$.
+**Dynamic typing**
+- Pro: Flexibilität, knapper Code, schnelle Entwicklung (rapid development).
+- Contra: Typfehler zeigen sich erst zur **Laufzeit**, mögliche Performance-Einbußen, schwierigeres Debugging.`,
+    },
+    {
+      id: 'namensregeln',
+      title: 'Namensregeln und Schreibweisen',
+      ref: '01 · Variables – Naming Conventions',
+      statement: r`**Nicht erlaubt** sind Namen, die
 
-Beispiel $w \circ \epsilon = w$: Anfang $\epsilon \circ \epsilon = \epsilon$ (Fall 1 der Definition von $\circ$). Schritt: $(a.v) \circ \epsilon = a.(v \circ \epsilon)$ (Fall 2) $= a.v$ (laut Annahme).`,
-      note: r`In jedem Umformungsschritt die Begründung dazuschreiben: „Definition von $\circ$“, „Definition von $|\cdot|$“ oder „laut Annahme“. Genau das wird in der Übung verlangt.`,
+- mit einer Ziffer beginnen (@@1_test@@),
+- Leerzeichen enthalten (@@my variable@@),
+- Sonderzeichen wie +, -, % enthalten,
+- ein reserviertes Schlüsselwort sind (@@if@@, @@while@@).
+
+**Schreibweisen für mehrere Wörter:**
+- **Camel Case:** jedes Wort außer dem ersten beginnt groß – @@myVariableName@@
+- **Pascal Case:** jedes Wort beginnt groß – @@MyVariableName@@
+- **Snake Case:** Wörter durch Unterstrich getrennt – @@my_variable_name@@`,
+      note: r`In Java gilt per Konvention: Klassen in PascalCase, Variablen und Methoden in camelCase.`,
     },
   ],
   claims: [
     {
-      id: 'pi-wort',
-      statement: r`$\pi = 31415926\dots$ ist ein Wort über dem Alphabet $\{0, 1, \dots, 9\}$.`,
-      holds: false,
-      reason: r`Ein Wort ist eine **endliche** Folge von Symbolen. $\pi$ hat unendlich viele Stellen und ist deshalb kein Wort – jedes Präfix von $\pi$ aber schon.`,
-    },
-    {
-      id: 'leere-sprache',
-      statement: r`Die Sprachen $\emptyset$ und $\{\epsilon\}$ sind gleich.`,
-      holds: false,
-      reason: r`$\emptyset$ enthält kein Wort, $\{\epsilon\}$ enthält genau ein Wort, nämlich das leere. $|\emptyset| = 0$, aber $|\{\epsilon\}| = 1$.`,
-    },
-    {
-      id: 'leeres-alphabet',
-      statement: r`Für das leere Alphabet gilt $\emptyset^* = \{\epsilon\}$.`,
+      id: 'python-aelter',
+      statement: r`Python ist älter als Java.`,
       holds: true,
-      reason: r`Ohne Symbole lässt sich nur die leere Folge bilden. $\epsilon \in \Sigma^*$ gilt für **jedes** Alphabet, auch für das leere.`,
-      ref: 'Übung 1 · Aufgabe 1',
+      reason: r`Python erschien 1991, Java 1995.`,
+      ref: '01 · A short timeline',
     },
     {
-      id: 'epsilon-in-jeder-sprache',
-      statement: r`Das leere Wort liegt in jeder formalen Sprache.`,
+      id: 'python-schwach',
+      statement: r`Python ist dynamisch typisiert und deshalb eine schwach typisierte Sprache.`,
       holds: false,
-      reason: r`$\epsilon$ liegt in $\Sigma^*$, aber eine Sprache ist eine beliebige **Teilmenge** von $\Sigma^*$. Gegenbeispiele: $\emptyset$ oder $\{a\}$.`,
+      reason: r`Python ist dynamically **und strongly** typed: @@"3" + 4@@ ist ein Fehler, es wird nicht implizit konvertiert. Dynamic/static sagt nur, **wann** Typen geprüft werden.`,
+      ref: '01 · Strongly Typed vs. Weakly Typed',
     },
     {
-      id: 'sigma-stern-unendlich',
-      statement: r`Für jedes nicht-leere Alphabet $\Sigma$ ist $\Sigma^*$ unendlich, obwohl $\Sigma$ endlich ist und jedes Wort endlich lang ist.`,
+      id: 'statisch-compile',
+      statement: r`In einer statisch typisierten Sprache werden Typfehler bereits zur Compile-Zeit gefunden.`,
       holds: true,
-      reason: r`Schon über $\{1\}$ gibt es $\epsilon, 1, 11, 111, \dots$ – unendlich viele Worte, jedes davon endlich.`,
+      reason: r`Der Typ jeder Variablen ist deklariert, der Compiler prüft die Typen vor der Ausführung (Early Error Detection). C++ und Java arbeiten so.`,
+      ref: '01 · Static Typed',
     },
     {
-      id: 'kommutativ',
-      statement: r`Die Konkatenation ist kommutativ: $u \circ v = v \circ u$ für alle $u, v \in \Sigma^*$.`,
+      id: 'ein-paradigma',
+      statement: r`Jede Programmiersprache gehört zu genau einem Paradigma.`,
       holds: false,
-      reason: r`Gegenbeispiel: $u = a$, $v = b$, dann $ab \ne ba$. Die Konkatenation ist assoziativ, aber nicht kommutativ.`,
+      reason: r`Viele Sprachen unterstützen mehrere Paradigmen. C++, Java und Python stehen in der Tabelle der Folien bei Imperative, Object-Oriented und Concurrent.`,
+      ref: '01 · by Paradigm',
     },
     {
-      id: 'laenge-summe',
-      statement: r`Für alle Worte gilt $|u \circ v| = |u| + |v|$.`,
+      id: 'sql-general',
+      statement: r`SQL ist eine General-purpose-Sprache.`,
+      holds: false,
+      reason: r`SQL ist domain-specific (Datenbanken) und zudem deklarativ: Man beschreibt, **was** man haben will, nicht wie es berechnet wird.`,
+      ref: '01 · by Purpose',
+    },
+    {
+      id: 'schwach-implizit',
+      statement: r`Schwach typisierte Sprachen wie JavaScript wandeln Datentypen bei Operationen oft automatisch um.`,
       holds: true,
-      reason: r`Satz der Folien, bewiesen durch strukturelle Induktion über $u$ (Übung 1, Aufgabe 3).`,
+      reason: r`Das ist die implicit type conversion: bequem, kann aber zu unerwarteten Ergebnissen und subtilen Bugs führen.`,
+      ref: '01 · Weakly Typed',
     },
     {
-      id: 'zerlegung-eindeutig',
-      statement: r`Jedes Wort $w \in \Sigma^*$ lässt sich eindeutig als $w = a.u$ mit $a \in \Sigma$, $u \in \Sigma^*$ schreiben.`,
+      id: 'rechte-seite',
+      statement: r`Bei einer Zuweisung @@x = x + 1@@ wird zuerst die linke Seite ausgewertet.`,
       holds: false,
-      reason: r`Das gilt nur für **nicht-leere** Worte. $\epsilon$ hat kein erstes Symbol.`,
+      reason: r`Erst wird die **rechte** Seite ausgewertet (alter Wert von x plus 1), dann wird das Ergebnis im Speicherort der linken Seite abgelegt.`,
+      ref: '01 · Assignment Statement',
     },
     {
-      id: 'll-gleich-l',
-      statement: r`Für jede Sprache $L$ gilt $L \circ L = L$.`,
+      id: 'procedure-wert',
+      statement: r`Eine Procedure liefert einen Wert zurück, eine Function nicht.`,
       holds: false,
-      reason: r`Gegenbeispiel: $L = \{a\}$, dann $L \circ L = \{aa\} \ne L$. (Für $L = \Sigma^*$ oder $L = \{\epsilon\}$ stimmt es – aber eben nicht allgemein.)`,
-      ref: 'Übung 1 · Aufgabe 2',
+      reason: r`Umgekehrt: Die Function liefert einen Wert, die Procedure führt nur Aktionen aus (Seiteneffekte).`,
+      ref: '01 · Functions / Procedures / Methods',
     },
     {
-      id: 'teilmenge-sprache',
-      statement: r`Die Menge aller Worte über $\{a, b, c\}$, die ein $c$ enthalten, ist eine formale Sprache.`,
+      id: 'uninit-cpp',
+      statement: r`Eine Variable vor ihrer Initialisierung zu lesen, führt in C++ zu Undefined Behavior.`,
       holds: true,
-      reason: r`Jede Teilmenge von $\Sigma^*$ ist eine formale Sprache; hier $\{ucv \mid u, v \in \Sigma^*\}$.`,
+      reason: r`C++ belegt lokale Variablen nicht automatisch vor; man liest einen zufälligen „Garbage“-Wert. Python meldet in derselben Lage einen NameError.`,
+      ref: '01 · Initialization',
     },
   ],
   problems: [
     {
-      id: 'leer-leer-leer',
-      title: 'ε, ∅ und {∅}',
-      source: 'nach Übung 1 · Aufgabe 1',
-      points: 4,
-      task: r`- (a) Bestimme die Sprache $L_1 = \emptyset^*$ durch Angabe aller Worte.
-- (b) Wie viele Worte enthält $L_2 = \{w \mid w \in \Sigma_2^* \wedge |w| = 1\}$ über dem Alphabet $\Sigma_2 = \emptyset$?
-- (c) Erläutere den Unterschied zwischen $\epsilon$, $\emptyset$ und $\{\emptyset\}$.`,
-      solution: r`- **(a)** Das Alphabet $\emptyset$ hat keine Symbole, also bleibt nur das leere Wort: $L_1 = \{\epsilon\}$.
-- **(b)** $\Sigma_2^* = \emptyset^* = \{\epsilon\}$, und $\epsilon$ hat nicht die Länge 1. Also ist $L_2$ leer: **0 Worte**.
-- **(c)** $\epsilon$ ist das leere **Wort** (eine leere Folge von Zeichen). $\emptyset = \{\}$ ist die leere **Menge**. $\{\emptyset\} = \{\{\}\}$ ist eine Menge, die als einziges Element die leere Menge enthält. Achtung: Das ist etwas anderes als $\{\epsilon\}$, denn $\{\}$ ist eine Menge, $\epsilon$ eine Folge von Symbolen.`,
+      id: 'einordnen',
+      title: 'Sprachen einordnen',
+      source: 'nach 01 · Programming Languages Classification',
+      points: 6,
+      task: r`Ordne C++, Java, Python, JavaScript und SQL ein:
+
+- statically oder dynamically typed? (für die ersten vier)
+- strongly oder weakly typed? (für die ersten vier)
+- general-purpose oder domain-specific?`,
+      hint: r`Zwei unabhängige Achsen: **wann** wird geprüft, und **wie streng**.`,
+      solution: r`~~~
+             Prüfzeitpunkt   Strenge   Zweck
+C++          static          strong    general-purpose
+Java         static          strong    general-purpose
+Python       dynamic         strong    general-purpose
+JavaScript   dynamic         weak      domain-specific (Web)
+SQL          –               –         domain-specific (Datenbanken)
+~~~
+
+Die Folien nennen C++ und Java als statically typed, Python und JavaScript als dynamically typed; strongly typed sind Python, C++, Java, weakly typed JavaScript, PHP, Perl.`,
     },
     {
-      id: 'gegenbeispiele',
-      title: 'Gegenbeispiele für Sprachgleichungen',
-      source: 'nach Übung 1 · Aufgabe 2',
-      points: 4,
-      task: r`Seien $L, L' \subseteq \Sigma^*$ beliebige Sprachen. Zeige durch je ein Gegenbeispiel, dass die folgenden Gleichungen im Allgemeinen nicht gelten:
-
-- $L \circ L = L$
-- $L \circ L' = L' \circ L$`,
-      hint: r`Die kleinsten Sprachen reichen: einelementige Sprachen mit Worten der Länge 1.`,
-      solution: r`- **$L \circ L = L$:** Wähle $L = \{a\}$. Dann ist $L \circ L = \{aa\}$ – ein Wort der Länge 2, das nicht in $L$ liegt. Also $L \circ L \ne L$.
-- **$L \circ L' = L' \circ L$:** Wähle $L = \{a\}$ und $L' = \{b\}$. Mit $L_1 \circ L_2 = \{u \circ v \mid u \in L_1, v \in L_2\}$ ist $L \circ L' = \{ab\}$, aber $L' \circ L = \{ba\}$. Wegen $ab \ne ba$ sind die Sprachen verschieden.`,
-    },
-    {
-      id: 'laengenerhalt',
-      title: 'Beweis: Längenerhalt bei Konkatenation',
-      source: 'nach Übung 1 · Aufgabe 3',
-      points: 8,
-      task: r`Beweise $|u \circ v| = |u| + |v|$ für alle $u, v \in \Sigma^*$. Nutze die Definitionen von $|\cdot|$ und $\circ$ und begründe jeden Schritt.`,
-      hint: r`Strukturelle Induktion über $u$ (das linke Wort – über das ist $\circ$ definiert). Wähle $P(u) = \forall v \in \Sigma^*: |u \circ v| = |u| + |v|$.`,
-      solution: r`Induktion über $u$ mit $P(u) = \forall v \in \Sigma^*: |u \circ v| = |u| + |v|$.
-
-**Anfang** $P(\epsilon)$:
-
-~~~
-|ε ∘ v| = |v|            Definition von ∘ (Fall 1)
-        = 0 + |v|
-        = |ε| + |v|      Definition von | | (Fall 1)
-~~~
-
-**Schritt** $P(u') \Rightarrow P(a.u')$ für beliebige $a \in \Sigma$, $u' \in \Sigma^*$:
-
-~~~
-|(a.u') ∘ v| = |a.(u' ∘ v)|      Definition von ∘ (Fall 2)
-             = 1 + |u' ∘ v|      Definition von | | (Fall 2)
-             = 1 + |u'| + |v|    Induktionsannahme P(u')
-             = |a.u'| + |v|      Definition von | | (Fall 2)
-~~~
-
-**Schluss:** Damit gilt $P(w)$ für alle $w \in \Sigma^*$.`,
-    },
-    {
-      id: 'rechtsneutral',
-      title: 'Beweis: w ∘ ε = w',
-      source: 'nach 01a · Strukturelle Induktion',
+      id: 'lebenszyklus-benennen',
+      title: 'Lebenszyklus am Code benennen',
+      source: 'nach 01 · Variable Lifecycle & Concepts',
       points: 5,
-      task: r`Beweise durch strukturelle Induktion: $\forall w \in \Sigma^*: w \circ \epsilon = w$. Warum ist das nicht einfach die Definition?`,
-      solution: r`Die Definition liefert nur $\epsilon \circ v = v$ – das leere Wort steht **links**. Für $\epsilon$ rechts braucht es einen Beweis.
+      task: r`Benenne für jede Zeile, welcher Schritt im Lebenszyklus der Variablen stattfindet, und gib den Wert von @@x@@ am Ende an.
 
-- **Anfang** ($w = \epsilon$): $\epsilon \circ \epsilon = \epsilon$ nach Fall 1 der Definition von $\circ$.
-- **Schritt:** Für beliebige $a \in \Sigma$, $v \in \Sigma^*$ gelte $v \circ \epsilon = v$ (Annahme). Dann $(a.v) \circ \epsilon = a.(v \circ \epsilon)$ nach Fall 2 der Definition, und das ist $a.v$ laut Annahme.
-- **Schluss:** $\forall w \in \Sigma^*: w \circ \epsilon = w$.`,
+~~~
+int x;        // (1)
+x = 5;        // (2)
+x = x * 2;    // (3)
+int y = x;    // (4)
+~~~
+
+Was wäre passiert, wenn Zeile (2) fehlte?`,
+      solution: r`1. **Declaration** – Speicher für einen int wird reserviert, noch kein definierter Wert.
+2. **Initialization** – die erste Zuweisung.
+3. **Assignment / Overwriting** – rechte Seite zuerst: 5 · 2 = 10, dann ersetzt 10 die 5.
+4. **Declaration mit Initialization** von y – der Wert 10 wird **kopiert**.
+
+Am Ende ist x = 10.
+
+Ohne Zeile (2) würde Zeile (3) eine nicht initialisierte Variable lesen: in C++ **Undefined Behavior** (ein zufälliger Garbage-Wert).`,
     },
     {
-      id: 'gauss',
-      title: 'Vollständige Induktion: Gaußsche Summe',
-      source: 'nach 01a · Wiederholung: Induktionsbeweise',
-      points: 5,
-      task: r`Beweise durch vollständige Induktion: $\forall n \in \N^+: \sum_{i=1}^{n} i = \frac{(n+1) \cdot n}{2}$.`,
-      solution: r`- **Anfang** ($n = 1$): $\sum_{i=1}^{1} i = 1$ und $\frac{(1+1) \cdot 1}{2} = 1$. ✓
-- **Schritt:** Die Behauptung gelte für $n$. Zu zeigen: $\sum_{i=1}^{n+1} i = \frac{(n+2)(n+1)}{2}$.
-
-$$\sum_{i=1}^{n+1} i = \sum_{i=1}^{n} i + (n+1) = \frac{(n+1) n}{2} + (n+1) = \frac{n^2 + n + 2n + 2}{2} = \frac{n^2 + 3n + 2}{2} = \frac{(n+2)(n+1)}{2}$$
-
-- **Schluss:** Die Behauptung gilt für $n = 1$ und überträgt sich von jedem $n$ auf $n + 1$, also für alle $n \in \N^+$.`,
-    },
-    {
-      id: 'einhorn',
-      title: 'Einhornbeweis: Wo steckt der Fehler?',
-      source: 'nach Übung 1 · Hausaufgabe 1',
+      id: 'namen-pruefen',
+      title: 'Bezeichner prüfen',
+      source: 'nach 01 · Naming Conventions',
       points: 4,
-      task: r`„Behauptung: Ist in einer Gruppe von $n$ Einhörnern eines rosa, so sind alle rosa. Anfang: $n = 1$ stimmt. Schritt: Unter $n + 1$ Einhörnern stehe das rosa Einhorn an Position 1. Nach Annahme sind die Einhörner $1, \dots, n$ rosa. Unter den Einhörnern $2, \dots, n + 1$ gibt es dann auch rosa Einhörner, also sind nach Annahme auch diese $n$ alle rosa. Somit sind alle $n + 1$ rosa.“
+      task: r`Welche Namen sind unzulässig, und warum? Welche Schreibweise haben die zulässigen?
 
-Finde den Fehler und begründe kurz.`,
-      solution: r`Der Schritt funktioniert schon von $n = 1$ auf $n = 2$ nicht: Die Gruppen $\{1\}$ und $\{2\}$ überlappen nicht, also gibt es in der zweiten Gruppe kein nachweislich rosa Einhorn („offensichtlich existieren auch hier rosa Einhörner“ ist für $n = 1$ falsch).
-
-Allgemein: Der Beweis zeigt nie den Transfer von $n$ auf $n + 1$. Er argumentiert einmal für $n$ Einhörner ($1 \dots n$) und dann für $n$ **andere** Einhörner ($2 \dots n + 1$) statt für $n + 1$ Einhörner. (Vgl. Pferde-Paradox.)`,
+~~~
+studentCount   2ndTry   total_sum   my var   while   MaxSpeed   rate%
+~~~`,
+      solution: r`- @@studentCount@@ – zulässig, **Camel Case**
+- @@2ndTry@@ – unzulässig: beginnt mit einer Ziffer
+- @@total_sum@@ – zulässig, **Snake Case**
+- @@my var@@ – unzulässig: Leerzeichen
+- @@while@@ – unzulässig: reserviertes Schlüsselwort
+- @@MaxSpeed@@ – zulässig, **Pascal Case**
+- @@rate%@@ – unzulässig: Sonderzeichen`,
     },
   ],
 });

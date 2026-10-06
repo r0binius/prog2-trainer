@@ -50,7 +50,7 @@ useHotkeys(() => ({
   <div class="lookup">
     <ScreenHeading title="Nachschlagen">
       <template #meta
-        >Alle Definitionen, Verfahren, Aussagen und Aufgaben – zum Suchen statt Blättern.</template
+        >Alle Definitionen, Regeln, Aussagen und Aufgaben – zum Suchen statt Blättern.</template
       >
     </ScreenHeading>
 

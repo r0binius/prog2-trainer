@@ -33,7 +33,7 @@ function referenceOf(): string {
 }
 
 const rules =
-  'Antworte auf Deutsch, knapp und freundlich, ohne Einleitung. Schreibe Formeln als TeX zwischen einfachen Dollarzeichen ($…$), kurzen Code zwischen @@…@@ und nutze sonst nur Fließtext, **fett** und Zeilen, die mit "- " beginnen.';
+  'Antworte auf Deutsch, knapp und freundlich, ohne Einleitung. Schreibe kurzen Code zwischen @@…@@ und mehrzeiligen Code zwischen zwei Zeilen, die nur aus ~~~ bestehen. Verwende kein Dollarzeichen und keine Backticks. Nutze sonst nur Fließtext, **fett** und Zeilen, die mit "- " beginnen.';
 
 async function ask(prompt: string): Promise<void> {
   if (tutor?.value === undefined) {
@@ -55,13 +55,13 @@ async function ask(prompt: string): Promise<void> {
 
 function check(): void {
   void ask(
-    `Du bist Tutor für die Vorlesung Theoretische Informatik (formale Sprachen, Automaten, Berechenbarkeit, Petri-Netze). Eine Studentin hat aus dem Gedächtnis aufgeschrieben, was unten unter ANTWORT steht. Vergleiche es mit der REFERENZ aus den Folien; deren Begriffe und Konventionen gelten. Sage in höchstens 120 Wörtern: was stimmt, was fehlt (besonders Voraussetzungen, Sonderfälle und die exakte formale Schreibweise) und was falsch ist. Schließe mit einem Urteil: "Gewusst" oder "Noch nicht". ${rules}\n\nREFERENZ:\n${referenceOf()}\n\nANTWORT:\n${answer}`,
+    `Du bist Tutor für die Vorlesung Fortgeschrittene Programmierung (C++ und Java: Speicher, OOP, Exceptions, Templates, JVM). Eine Studentin hat aus dem Gedächtnis aufgeschrieben, was unten unter ANTWORT steht. Vergleiche es mit der REFERENZ aus den Folien; deren Begriffe und Konventionen gelten. Sage in höchstens 120 Wörtern: was stimmt, was fehlt (besonders Bedingungen, Sonderfälle, die englischen Fachbegriffe der Folien und bei Code die korrekte Syntax) und was falsch ist. Schließe mit einem Urteil: "Gewusst" oder "Noch nicht". ${rules}\n\nREFERENZ:\n${referenceOf()}\n\nANTWORT:\n${answer}`,
   );
 }
 
 function explain(): void {
   void ask(
-    `Du bist Tutor für die Vorlesung Theoretische Informatik (formale Sprachen, Automaten, Berechenbarkeit, Petri-Netze). Erkläre das Folgende anschaulich in höchstens 150 Wörtern: die Idee dahinter, wozu man es braucht, und ein kleines Beispiel oder eine typische Falle. ${rules}\n\n${referenceOf()}`,
+    `Du bist Tutor für die Vorlesung Fortgeschrittene Programmierung (C++ und Java: Speicher, OOP, Exceptions, Templates, JVM). Erkläre das Folgende anschaulich in höchstens 150 Wörtern: die Idee dahinter, wozu man es braucht, und ein kleines Codebeispiel oder eine typische Falle. ${rules}\n\n${referenceOf()}`,
   );
 }
 </script>

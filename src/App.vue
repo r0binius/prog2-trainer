@@ -44,13 +44,13 @@ watch(
       >
         {{ menuOpen ? 'Schließen' : 'Menü' }}
       </button>
-      <RouterLink class="brand" :to="toOverview()">TI</RouterLink>
+      <RouterLink class="brand" :to="toOverview()">FP</RouterLink>
       <RouterLink v-if="due > 0" class="due-link" :to="toReview()">{{ due }} fällig</RouterLink>
     </header>
 
     <nav id="sidebar" class="sidebar" aria-label="Navigation">
       <RouterLink class="brand wide" :to="toOverview()"
-        >Theoretische Informatik<span class="sub">Prüfungstrainer</span></RouterLink
+        >Fortgeschrittene Programmierung<span class="sub">Prüfungstrainer</span></RouterLink
       >
       <div class="group">
         <RouterLink class="link" :to="toOverview()">Übersicht</RouterLink>

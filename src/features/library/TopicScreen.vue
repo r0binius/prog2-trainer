@@ -56,10 +56,10 @@ const due = computed(() => dueItems(topicItems(topic), store.progress, store.end
     </GroupedList>
 
     <p class="advice">
-      Reihenfolge, die sich bewährt: erst die Definitionen, dann die Sätze und Verfahren, dann „Wahr
-      oder falsch“ zum Prüfen des Verständnisses – und zuletzt die Aufgaben mit Stift und Papier:
-      Automaten und Petri-Netze wirklich zeichnen, Tabellen (Trennbarkeit, CYK, Erreichbarkeit)
-      selbst ausfüllen, Beweise ausformulieren.
+      Reihenfolge, die sich bewährt: erst die Definitionen, dann die Regeln und Konzepte, dann „Wahr
+      oder falsch“ zum Prüfen des Verständnisses – und zuletzt die Aufgaben: Code erst auf Papier
+      schreiben, Ausgaben von Hand verfolgen, Stack und Heap wirklich zeichnen, danach im Editor
+      übersetzen und ausprobieren.
     </p>
   </div>
 </template>

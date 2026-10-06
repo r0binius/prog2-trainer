@@ -118,7 +118,7 @@ function pointChoices(task: ExamTask): readonly number[] {
           <span>
             <strong>{{ option.title }}</strong> – {{ option.minutes }} Minuten:
             {{ option.counts.definitions }} Definitionen,
-            {{ option.counts.theorems }} Verfahren/Sätze, {{ option.counts.claims }} × wahr/falsch,
+            {{ option.counts.theorems }} Regeln/Konzepte, {{ option.counts.claims }} × wahr/falsch,
             {{ option.counts.problems }}
             {{ option.counts.problems === 1 ? 'Aufgabe' : 'Aufgaben' }}
           </span>
